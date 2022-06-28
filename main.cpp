@@ -366,7 +366,7 @@ public:
     {
         p = _p;
     }
-    virtual std::shared_ptr<PizzaD> removeAnchovy()
+    virtual std::shared_ptr<PizzaD> removeAnchovy() final
     {
         return p->removeAnchovy();
     }
@@ -375,6 +375,7 @@ public:
         return std::string{ "Anchovy(" } + p->toString() + ")";
     }
 };
+
 
 
 class Sausage : public PizzaD
@@ -400,7 +401,6 @@ int main(void)
 {
     auto x = std::make_shared<ManhattanPt>(2, 4);
    
-
     auto y =
         std::make_shared<Anchovy>(
             std::make_shared<Olive>(
@@ -408,6 +408,7 @@ int main(void)
                     std::make_shared<Anchovy>(
                         std::make_shared<Cheese>(
                             std::make_shared<Crust>())))));
+
     std::cout << y->removeAnchovy()->toString() << std::endl;
     return 0;
 }
